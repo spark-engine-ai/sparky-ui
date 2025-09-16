@@ -1,4 +1,4 @@
-# Spark UI
+# Sparky UI
 
 A modern, sleek Tailwind CSS plugin for quick-to-integrate components and layouts with automatic theming support. Inspired by DaisyUI but with a focus on contemporary design patterns, glass morphism effects, and smooth animations.
 
@@ -13,13 +13,13 @@ A modern, sleek Tailwind CSS plugin for quick-to-integrate components and layout
 
 ## Installation
 
-Install Spark UI as a development dependency:
+Install Sparky UI as a development dependency:
 
 ```bash
 npm install -D spark-ui
 ```
 
-Add Spark UI to your Tailwind CSS configuration:
+Add Sparky UI to your Tailwind CSS configuration:
 
 ```js
 // tailwind.config.js
@@ -30,7 +30,7 @@ module.exports = {
 }
 ```
 
-Add Spark UI to your CSS:
+Add Sparky UI to your CSS:
 
 ```css
 /* app.css */
@@ -56,7 +56,7 @@ Simply add the classes to your HTML elements:
 
 ### Theme Switching
 
-Spark UI automatically follows system preferences but you can manually set themes:
+Sparky UI automatically follows system preferences but you can manually set themes:
 
 ```html
 <!-- Light theme (default) -->
@@ -231,11 +231,11 @@ Collapsible content sections:
 <div class="accordion">
   <div class="accordion-item">
     <button class="accordion-header">
-      What is Spark UI?
+      What is Sparky UI?
       <span>+</span>
     </button>
     <div class="accordion-content">
-      Spark UI is a modern Tailwind CSS plugin with 25+ components.
+      Sparky UI is a modern Tailwind CSS plugin with 25+ components.
     </div>
   </div>
   <div class="accordion-item">
@@ -488,7 +488,7 @@ Eye-catching hero sections with gradients:
     <div class="max-w-md">
       <h1 class="text-5xl font-bold">Hello there</h1>
       <p class="py-6">
-        Welcome to Spark UI - modern, sleek components for your next project.
+        Welcome to Sparky UI - modern, sleek components for your next project.
       </p>
       <button class="btn btn-primary">Get Started</button>
     </div>
@@ -530,7 +530,7 @@ Sleek navigation bars:
 
 ```html
 <nav class="navbar">
-  <a class="navbar-brand" href="#">Spark UI</a>
+  <a class="navbar-brand" href="#">Sparky UI</a>
   <ul class="navbar-nav">
     <li><a class="navbar-link" href="#">Home</a></li>
     <li><a class="navbar-link" href="#">About</a></li>
@@ -618,7 +618,7 @@ Website footer sections:
 
 ## Color System
 
-Spark UI uses a semantic color system with automatic dark mode:
+Sparky UI uses a semantic color system with automatic dark mode:
 
 - `primary` - Main brand color
 - `secondary` - Secondary brand color  
@@ -668,7 +668,7 @@ All components can be further customized using standard Tailwind classes:
 
 ## React Integration
 
-Spark UI works seamlessly with React and other frameworks:
+Sparky UI works seamlessly with React and other frameworks:
 
 ```jsx
 import React, { useState } from 'react';
@@ -700,7 +700,7 @@ function App() {
         <div className="hero-content text-center">
           <div className="card">
             <div className="card-body">
-              <h1 className="card-title text-4xl">Welcome to Spark UI</h1>
+              <h1 className="card-title text-4xl">Welcome to Sparky UI</h1>
               <p>Modern components for modern apps</p>
               <div className="card-actions">
                 <button className="btn btn-primary">Get Started</button>
@@ -731,4 +731,4 @@ MIT License - see LICENSE file for details.
 
 ---
 
-Made with ❤️ by the Spark UI team
+Made with ❤️ by the Sparky UI team

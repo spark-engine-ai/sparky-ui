@@ -15,7 +15,7 @@
     "react",
     "css"
   ],
-  "author": "Spark UI",
+  "author": "Sparky UI",
   "license": "MIT",
   "peerDependencies": {
     "tailwindcss": ">=3.0.0"
