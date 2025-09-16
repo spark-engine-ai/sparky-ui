@@ -1,0 +1,40 @@
+{
+  "name": "spark-ui",
+  "version": "1.0.0",
+  "description": "A modern, sleek Tailwind CSS plugin with 25+ quick-to-integrate components including chat bubbles, accordions, modals, timelines, pricing cards, and more - all with glass morphism effects and automatic theming support",
+  "main": "index.js",
+  "keywords": [
+    "tailwindcss",
+    "plugin",
+    "ui",
+    "components",
+    "modern",
+    "sleek",
+    "theming",
+    "dark-mode",
+    "react",
+    "css"
+  ],
+  "author": "Spark UI",
+  "license": "MIT",
+  "peerDependencies": {
+    "tailwindcss": ">=3.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  },
+  "files": [
+    "index.js",
+    "themes/",
+    "components/",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/spark-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/spark-ui/issues"
+  },
+  "homepage": "https://github.com/your-username/spark-ui#readme"
+}

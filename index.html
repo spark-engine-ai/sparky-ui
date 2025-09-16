@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark UI - Modern Component Library</title>
+    <meta name="description" content="50+ sleek, modern components with glass morphism effects. The most advanced Tailwind CSS component library.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <style>
+        /* Modern Black & White Theme */
+        :root {
+            --primary: 255 255 255;
+            --primary-content: 0 0 0;
+            --secondary: 163 163 163;
+            --secondary-content: 0 0 0;
+            --accent: 115 115 115;
+            --accent-content: 255 255 255;
+            --neutral: 64 64 64;
+            --neutral-content: 255 255 255;
+            --base-100: 0 0 0;
+            --base-200: 23 23 23;
+            --base-300: 38 38 38;
+            --base-content: 255 255 255;
+            --info: 255 255 255;
+            --info-content: 0 0 0;
+            --success: 34 197 94;
+            --success-content: 255 255 255;
+            --warning: 251 191 36;
+            --warning-content: 0 0 0;
+            --error: 239 68 68;
+            --error-content: 255 255 255;
+        }
+
+        [data-theme="light"] {
+            --primary: 0 0 0;
+            --primary-content: 255 255 255;
+            --secondary: 115 115 115;
+            --secondary-content: 255 255 255;
+            --accent: 64 64 64;
+            --accent-content: 255 255 255;
+            --neutral: 163 163 163;
+            --neutral-content: 0 0 0;
+            --base-100: 255 255 255;
+            --base-200: 248 250 252;
+            --base-300: 226 232 240;
+            --base-content: 15 23 42;
+            --info: 0 0 0;
+            --info-content: 255 255 255;
+            --success: 34 197 94;
+            --success-content: 255 255 255;
+            --warning: 251 191 36;
+            --warning-content: 0 0 0;
+            --error: 239 68 68;
+            --error-content: 255 255 255;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: rgb(var(--base-100) / 1);
+            color: rgb(var(--base-content) / 1);
+        }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 500; line-height: 1.25rem; border-radius: 0.5rem; border: 1px solid transparent; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; user-select: none; white-space: nowrap; background-color: rgb(var(--neutral) / 1); color: rgb(var(--neutral-content) / 1); }
+        .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); background-color: rgb(var(--neutral) / 0.9); }
+        .btn-primary { background: linear-gradient(135deg, rgb(var(--primary) / 1), rgb(var(--primary) / 0.8)); color: rgb(var(--primary-content) / 1); }
+        .btn-primary:hover { background: linear-gradient(135deg, rgb(var(--primary) / 0.9), rgb(var(--primary) / 0.7)); }
+        .btn-ghost { background-color: transparent; border: 1px solid rgb(var(--base-300) / 1); color: rgb(var(--base-content) / 1); }
+        .btn-ghost:hover { background-color: rgb(var(--base-200) / 1); border-color: rgb(var(--base-content) / 0.2); }
+        .btn-lg { padding: 1rem 2rem; font-size: 1rem; }
+
+        .card { background-color: rgb(var(--base-100) / 1); border-radius: 1rem; border: 1px solid rgb(var(--base-300) / 0.2); overflow: hidden; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: blur(10px); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); border-color: rgb(var(--primary) / 0.3); }
+        .card-body { padding: 2rem; }
+        .card-title { font-size: 1.25rem; font-weight: 600; line-height: 1.75rem; color: rgb(var(--base-content) / 1); margin-bottom: 0.5rem; }
+
+        .badge { display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; font-size: 0.75rem; font-weight: 500; border-radius: 9999px; background-color: rgb(var(--base-200) / 1); color: rgb(var(--base-content) / 1); border: 1px solid rgb(var(--base-300) / 0.3); }
+        .badge-primary { background: linear-gradient(135deg, rgb(var(--primary) / 1), rgb(var(--primary) / 0.8)); color: rgb(var(--primary-content) / 1); border: 1px solid rgb(var(--primary) / 0.3); }
+        .badge-success { background: linear-gradient(135deg, rgb(var(--success) / 1), rgb(var(--success) / 0.8)); color: rgb(var(--success-content) / 1); border: 1px solid rgb(var(--success) / 0.3); }
+
+        .glass { background-color: rgb(var(--base-100) / 0.8); backdrop-filter: blur(10px); border: 1px solid rgb(var(--base-300) / 0.2); }
+        .text-gradient { background: linear-gradient(135deg, rgb(var(--primary) / 1), rgb(var(--accent) / 1)); background-clip: text; -webkit-background-clip: text; color: transparent; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .float { animation: float 6s ease-in-out infinite; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
+
+        .hero-bg {
+            background: radial-gradient(ellipse at top, rgb(var(--primary) / 0.1), transparent),
+                        radial-gradient(ellipse at bottom, rgb(var(--accent) / 0.1), transparent),
+                        linear-gradient(135deg, rgb(var(--base-200) / 1), rgb(var(--base-100) / 1));
+        }
+
+        .navbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background-color: rgb(var(--base-100) / 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid rgb(var(--base-300) / 0.2); position: sticky; top: 0; z-index: 50; }
+        .navbar-brand { font-size: 1.5rem; font-weight: 800; color: rgb(var(--base-content) / 1); text-decoration: none; }
+        .navbar-nav { display: flex; align-items: center; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+        .navbar-link { color: rgb(var(--base-content) / 0.7); text-decoration: none; font-weight: 500; transition: color 0.2s; padding: 0.5rem 1rem; border-radius: 0.5rem; }
+        .navbar-link:hover { color: rgb(var(--primary) / 1); background-color: rgb(var(--base-200) / 0.5); }
+
+        .section { padding: 5rem 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+
+        .code-block {
+            background-color: rgb(var(--base-200) / 1);
+            border: 1px solid rgb(var(--base-300) / 0.3);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+        }
+
+        .mobile-menu { display: none; }
+        @media (max-width: 768px) {
+            .navbar-nav { display: none; }
+            .mobile-menu { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="flex items-center">
+            <a href="#" class="navbar-brand text-gradient">⚡ Spark UI</a>
+        </div>
+        
+        <ul class="navbar-nav">
+            <li><a href="#features" class="navbar-link">Features</a></li>
+            <li><a href="#components" class="navbar-link">Components</a></li>
+            <li><a href="docs.html" class="navbar-link">Documentation</a></li>
+            <li><a href="#getting-started" class="navbar-link">Get Started</a></li>
+            <li><button id="theme-toggle" class="btn btn-ghost">🌙</button></li>
+            <li><button onclick="openCommandPalette()" class="btn btn-ghost" title="Command Palette (Ctrl+K)">⌘</button></li>
+        </ul>
+
+        <button class="mobile-menu btn btn-ghost" onclick="toggleMobileMenu()">☰</button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-nav" class="hidden bg-base-100 border-b border-base-300/20 p-4">
+        <div class="flex flex-col gap-2">
+            <a href="#features" class="navbar-link">Features</a>
+            <a href="#components" class="navbar-link">Components</a>
+            <a href="docs.html" class="navbar-link">Documentation</a>
+            <a href="#getting-started" class="navbar-link">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl float" style="animation-delay: 0s;"></div>
+        <div class="absolute top-40 right-20 w-32 h-32 bg-accent/10 rounded-full blur-xl float" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-40 left-1/4 w-24 h-24 bg-primary/5 rounded-full blur-xl float" style="animation-delay: 4s;"></div>
+        
+        <div class="container text-center fade-in-up">
+            <h1 class="text-6xl md:text-8xl font-bold mb-8 text-gradient leading-tight">
+                Spark UI
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" style="color: rgb(var(--base-content) / 0.8);">
+                50+ Ultra-Modern Components with Glass Morphism Effects
+            </p>
+            <p class="text-lg mb-12 max-w-2xl mx-auto" style="color: rgb(var(--base-content) / 0.6);">
+                The most advanced Tailwind CSS component library. Sleek black & white design, beautiful animations, and flawless dark/light mode switching.
+            </p>
+            
+            <!-- Badges -->
+            <div class="flex gap-3 justify-center flex-wrap mb-12">
+                <span class="badge badge-primary">50+ Components</span>
+                <span class="badge badge-success">Glass Morphism</span>
+                <span class="badge">Advanced Animations</span>
+                <span class="badge">Modern Design</span>
+                <span class="badge">Mobile First</span>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex gap-4 justify-center flex-wrap mb-16">
+                <a href="docs.html" class="btn btn-primary btn-lg">
+                    📖 View Documentation
+                </a>
+                <a href="#getting-started" class="btn btn-ghost btn-lg">
+                    🚀 Get Started
+                </a>
+                <a href="showcase.html" class="btn btn-ghost btn-lg">
+                    ✨ Live Demo
+                </a>
+            </div>
+
+            <!-- Quick Install -->
+            <div class="max-w-md mx-auto">
+                <div class="code-block">
+                    <div class="flex items-center justify-between mb-2">
+                        <span style="color: rgb(var(--base-content) / 0.6);" class="text-sm">Install via npm</span>
+                        <button onclick="copyToClipboard('npm i -D spark-ui')" class="text-sm btn-ghost px-2 py-1 rounded">Copy</button>
+                    </div>
+                    <code>npm i -D spark-ui</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section" style="background-color: rgb(var(--base-200) / 0.3);">
+        <div class="container">
+            <div class="stat-grid">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gradient mb-2">50+</div>
+                    <div class="text-sm font-medium" style="color: rgb(var(--base-content) / 0.6); text-transform: uppercase; letter-spacing: 0.05em;">Components</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gradient mb-2">3.2kb</div>
+                    <div class="text-sm font-medium" style="color: rgb(var(--base-content) / 0.6); text-transform: uppercase; letter-spacing: 0.05em;">Ultra Light</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gradient mb-2">100%</div>
+                    <div class="text-sm font-medium" style="color: rgb(var(--base-content) / 0.6); text-transform: uppercase; letter-spacing: 0.05em;">Modern</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gradient mb-2">∞</div>
+                    <div class="text-sm font-medium" style="color: rgb(var(--base-content) / 0.6); text-transform: uppercase; letter-spacing: 0.05em;">Sleek</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: rgb(var(--base-content) / 1);">Why Choose Spark UI?</h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: rgb(var(--base-content) / 0.7);">
+                    Built for modern web development with a focus on performance, accessibility, and developer experience.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-4xl mb-4">🎨</div>
+                        <h3 class="card-title">Modern Design</h3>
+                        <p style="color: rgb(var(--base-content) / 0.7);">
+                            Glass morphism effects, smooth animations, and contemporary styling that makes your interfaces stand out.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-4xl mb-4">🌙</div>
+                        <h3 class="card-title">Auto Dark Mode</h3>
+                        <p style="color: rgb(var(--base-content) / 0.7);">
+                            Seamlessly adapts to system preferences with beautiful dark and light themes out of the box.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-4xl mb-4">⚡</div>
+                        <h3 class="card-title">Quick Setup</h3>
+                        <p style="color: rgb(var(--base-content) / 0.7);">
+                            Drop-in components that work instantly. No complex configuration or setup required.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-4xl mb-4">📱</div>
+                        <h3 class="card-title">Mobile First</h3>
+                        <p style="color: rgb(var(--base-content) / 0.7);">
+                            Responsive design that looks perfect on all devices, from mobile to desktop.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-4xl mb-4">🔧</div>
+                        <h3 class="card-title">Fully Customizable</h3>
+                        <p style="color: rgb(var(--base-content) / 0.7);">
+                            CSS variables and Tailwind classes make theming and customization a breeze.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-4xl mb-4">♿</div>
+                        <h3 class="card-title">Accessible</h3>
+                        <p style="color: rgb(var(--base-content) / 0.7);">
+                            Built with accessibility in mind, following WCAG guidelines and best practices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components Showcase -->
+    <section id="components" class="section" style="background-color: rgb(var(--base-200) / 0.3);">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: rgb(var(--base-content) / 1);">Component Library</h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: rgb(var(--base-content) / 0.7);">
+                    A comprehensive collection of modern UI components for every use case.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+                <!-- Navigation Components -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">🧭 Navigation</h3>
+                        <p class="mb-4" style="color: rgb(var(--base-content) / 0.7);">
+                            Navbars, breadcrumbs, sidebars, and menus
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="badge">Navbar</span>
+                            <span class="badge">Breadcrumbs</span>
+                            <span class="badge">Sidebar</span>
+                            <span class="badge">Dropdown</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Display -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">📊 Data Display</h3>
+                        <p class="mb-4" style="color: rgb(var(--base-content) / 0.7);">
+                            Cards, tables, stats, and timelines
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="badge">Cards</span>
+                            <span class="badge">Stats</span>
+                            <span class="badge">Timeline</span>
+                            <span class="badge">Gallery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">💬 Feedback</h3>
+                        <p class="mb-4" style="color: rgb(var(--base-content) / 0.7);">
+                            Alerts, toasts, progress bars, and loading states
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="badge">Alerts</span>
+                            <span class="badge">Toast</span>
+                            <span class="badge">Progress</span>
+                            <span class="badge">Loading</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forms -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">📝 Forms</h3>
+                        <p class="mb-4" style="color: rgb(var(--base-content) / 0.7);">
+                            Inputs, buttons, toggles, and form layouts
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="badge">Buttons</span>
+                            <span class="badge">Inputs</span>
+                            <span class="badge">Toggles</span>
+                            <span class="badge">Forms</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layout -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">🎯 Layout</h3>
+                        <p class="mb-4" style="color: rgb(var(--base-content) / 0.7);">
+                            Heroes, grids, containers, and sections
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="badge">Hero</span>
+                            <span class="badge">Grid</span>
+                            <span class="badge">Container</span>
+                            <span class="badge">Footer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Communication -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">💭 Communication</h3>
+                        <p class="mb-4" style="color: rgb(var(--base-content) / 0.7);">
+                            Chat bubbles, testimonials, and modals
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="badge">Chat</span>
+                            <span class="badge">Modal</span>
+                            <span class="badge">Testimonial</span>
+                            <span class="badge">Accordion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="docs.html" class="btn btn-primary btn-lg">
+                    📋 View All Components
+                </a>
+                <a href="showcase.html" class="btn btn-ghost btn-lg ml-4">
+                    🎮 Interactive Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started -->
+    <section id="getting-started" class="section">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: rgb(var(--base-content) / 1);">Get Started in Minutes</h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: rgb(var(--base-content) / 0.7);">
+                    Three simple steps to start building ultra-modern interfaces with Spark UI.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl font-bold text-white" style="background: linear-gradient(135deg, rgb(var(--primary) / 1), rgb(var(--accent) / 1));">1</div>
+                    <h3 class="text-xl font-semibold mb-4">Install Package</h3>
+                    <div class="code-block text-left">
+                        <code>npm install -D spark-ui</code>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl font-bold text-white" style="background: linear-gradient(135deg, rgb(var(--primary) / 1), rgb(var(--accent) / 1));">2</div>
+                    <h3 class="text-xl font-semibold mb-4">Configure Tailwind</h3>
+                    <div class="code-block text-left">
+                        <code>plugins: [require('spark-ui')]</code>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl font-bold text-white" style="background: linear-gradient(135deg, rgb(var(--primary) / 1), rgb(var(--accent) / 1));">3</div>
+                    <h3 class="text-xl font-semibold mb-4">Start Building</h3>
+                    <div class="code-block text-left">
+                        <code>&lt;button class="btn btn-primary"&gt;</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <h3 class="text-2xl font-semibold mb-6 text-center">Complete Example</h3>
+                <div class="code-block">
+<pre><code class="language-html">&lt;!-- Add to your tailwind.config.js --&gt;
+module.exports = {
+  plugins: [require('spark-ui')]
+}
+
+&lt;!-- Use in your HTML --&gt;
+&lt;div class="card"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h2 class="card-title"&gt;Welcome to Spark UI&lt;/h2&gt;
+    &lt;p&gt;Beautiful components with glass effects&lt;/p&gt;
+    &lt;button class="btn btn-primary"&gt;Get Started&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="section" style="background-color: rgb(var(--base-200) / 1); border-top: 1px solid rgb(var(--base-300) / 0.2);">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-gradient">⚡ Spark UI</h3>
+                    <p style="color: rgb(var(--base-content) / 0.7);">
+                        Modern Tailwind CSS components for beautiful web interfaces.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Documentation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="docs.html" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">Components</a></li>
+                        <li><a href="docs.html#installation" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">Installation</a></li>
+                        <li><a href="docs.html#customization" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">Customization</a></li>
+                        <li><a href="docs.html#examples" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">Examples</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="showcase.html" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">Live Demo</a></li>
+                        <li><a href="#" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">GitHub</a></li>
+                        <li><a href="#" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">NPM Package</a></li>
+                        <li><a href="#" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">Changelog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Community</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">Discord</a></li>
+                        <li><a href="#" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">Twitter</a></li>
+                        <li><a href="#" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">Contributors</a></li>
+                        <li><a href="#" style="color: rgb(var(--base-content) / 0.7);" class="hover:text-primary transition-colors">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t pt-8" style="border-color: rgb(var(--base-300) / 0.2);">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p style="color: rgb(var(--base-content) / 0.6);">&copy; 2024 Spark UI. MIT License.</p>
+                    <div class="flex items-center gap-4 mt-4 md:mt-0">
+                        <span style="color: rgb(var(--base-content) / 0.6);">Made with ❤️ for developers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        let currentTheme = 'dark'; // Start with dark theme
+        
+        themeToggle.addEventListener('click', () => {
+            if (currentTheme === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                currentTheme = 'light';
+                themeToggle.textContent = '🌙';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                currentTheme = 'dark';
+                themeToggle.textContent = '🌞';
+            }
+        });
+
+        // Set initial theme
+        html.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '🌞';
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('hidden');
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Could show a toast notification here
+                console.log('Copied to clipboard');
+            });
+        }
+
+        // Highlight.js
+        hljs.highlightAll();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
